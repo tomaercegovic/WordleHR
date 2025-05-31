@@ -1,0 +1,209 @@
+body {
+    background: rgb(168, 168, 168);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+:root {
+    --default: #121213;
+    --prazno: #3a3a3c;
+    --krivo: #b59f3b;
+    --tocno: #538d4e;
+}
+
+#igra-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#igra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 70px);
+    grid-template-rows: repeat(6, 70px);
+    gap: 6px;
+    justify-content: center;
+}
+
+.box {
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--prazno);
+    color: white;
+    text-transform: uppercase;
+    display: grid;
+    place-items: center;
+    font-size: 2.4rem;
+    font-family: "Ubuntu", sans-serif; 
+}
+
+.box.tocno {
+    background: var(--tocno);
+}
+
+.box.krivo {
+    background: var(--krivo);
+}
+
+.box.prazno {
+    background: var(--prazno);
+}
+
+h1 {
+    text-align: center;
+    font-size: 70px;
+    color: whitesmoke;
+    margin-bottom: -30px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.ukrasna-linija {
+    width: 40%;
+    height: 4px;
+    background: linear-gradient(to right, #ff0000, #ff9900, #ffff00);
+    border-radius: 10px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+}
+
+b {
+    text-align: center;
+    font-size: 28px;
+    color: whitesmoke;
+    margin-bottom: -30px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.keyboard {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.key {
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    font-family: "Ubuntu", sans-serif; /* Dodano za promjenu fonta */
+}
+
+.key.correct {
+    background-color: var(--tocno);
+    color: white;
+}
+
+.key.incorrect {
+    background-color: var(--krivo);
+    color: white;
+}
+
+.key.missed {
+    background-color: var(--prazno);
+    color: white;
+}
+
+.restart-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #538d4e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+}
+
+.restart-button:hover {
+    background-color: #3a6d34;
+}
+
+@keyframes reveal {
+    0% {
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+.box.revealing {
+    animation: reveal 0.5s ease-in-out;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 950px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .ukrasna-linija {
+        width: 60%;
+    }
+
+    .grid {
+        grid-template-columns: repeat(5, 50px);
+        grid-template-rows: repeat(6, 50px);
+    }
+
+    .box {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .keyboard {
+        display: none; 
+    }
+
+    .restart-button {
+        font-size: 14px;
+        padding: 8px 16px;
+        margin-top: 20px;
+        position: static;
+        transform: none;
+    }
+}
